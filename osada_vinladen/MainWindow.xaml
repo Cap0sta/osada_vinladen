@@ -1,0 +1,86 @@
+﻿<Window x:Class="osada_vinladen.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:osada_vinladen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="Padding" Value="5"/>
+                    <Setter Property="Width" Value="400"/>
+                    <Setter Property="Foreground" Value="DarkRed"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="10,5"/>
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsKeyboardFocused" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="LightSeaGreen"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+
+
+                <Style TargetType="TextBlock">
+                    <Setter Property="DockPanel.Dock" Value="Top"/>
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="Yellow"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="Padding" Value="20,3"/>
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="LightSeaGreen"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+            
+            
+            
+            <TextBlock x:Name="Naglowek" Text="Anagramy - słowa zbudowane z tej samej ilości takich samych liter" ></TextBlock>
+            
+            <Label Content="Pierwsze słowo" FontSize="25" HorizontalAlignment="Center" Margin="0,20,10,10" Foreground="IndianRed"></Label>
+            <TextBox x:Name="pierwszy_slot" Text="{Binding Path=Slowo1}"></TextBox>
+
+            <Label Content="Drugie słowo" FontSize="25" HorizontalAlignment="Center" Margin="0,25,10,10" Foreground="IndianRed"></Label>
+            <TextBox x:Name="drugi_slot" Text="{Binding Path=Slowo2}"></TextBox>
+
+
+
+
+            
+     
+            <ToggleButton x:Name="BtnWyslij" Content="Sprawdz anagram" HorizontalAlignment="Center" Margin="0,10,0,10"  Background="LightYellow" Foreground="IndianRed" FontStretch="Expanded"  FontSize="25" Padding="153,1" Width="122" Checked="BtnWyslij_Checked" Unchecked="BtnWyslij_Unchecked"/>
+            <Popup x:Name="popupLatwo" IsOpen="{Binding ElementName=BtnWyslij, Path=IsChecked}"
+                     PlacementTarget="{Binding ElementName=BtnWyslij}" Placement="Bottom"
+                        AllowsTransparency="True"
+                        PopupAnimation="Slide"
+                        Margin="5,0,0,0"
+                        VerticalOffset="1">
+                <TextBlock Name="m4a1" Background="WhiteSmoke" Foreground="Black" Text="{Binding Path=Wynik}"/>
+
+            </Popup>
+
+
+
+
+
+
+        </StackPanel>
+    </Grid>
+    
+</Window>
